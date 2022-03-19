@@ -24,4 +24,8 @@ php artisan key:generate <br>
 php artisan migrate <br>
 
 # Старт проекта <br>
+<<<<<<< HEAD
 Нужно открыть 2 консоли, в первой прописать php artisan serve, во второй npm run watch
+=======
+Нужно открыть 2 консоли, в первой прописать php artisan serve, во второй npm run watch
+>>>>>>> 3f87ce891f7372faba68d5db056c6edf681b1919
