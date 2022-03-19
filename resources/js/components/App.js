@@ -10,8 +10,8 @@ function App (){
 
 export default App;
 
-if (document.getElementById('app')) {
+if (document.getElementById('home')) {
     ReactDOM.render(
-        <App />, document.getElementById('app'));
+        <App />, document.getElementById('home'));
 }
 

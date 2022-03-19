@@ -2,7 +2,12 @@ import React from 'react';
 import Header from './Header'
 import Opportunities from './Opportunities';
 import '../../sass/main.scss'
+import axios from 'axios';
 export default function Main() {
+    axios.get('/api/current')
+    .then(resp=>{
+        console.log(resp)
+    })
     return(
         <main>
             <Header />
@@ -22,4 +27,5 @@ export default function Main() {
             <Opportunities />
         </main>
     );
+    
 }

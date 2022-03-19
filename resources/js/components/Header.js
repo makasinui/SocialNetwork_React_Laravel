@@ -12,8 +12,12 @@ export default function Header() {
                         <li className="link">Главная</li>
                         <li className="link">Контакты</li>
                         <li className="link">Помощь</li>
-                        <li className="link">Авторизация</li>
-                        <li className="link">Регистрация</li>
+                        <a href="./login">
+                            <li className="link">Авторизация</li>
+                        </a>
+                        <a href="./register">
+                            <li className="link">Регистрация</li>
+                        </a>
                         {/* <li className="link">Выход</li> */}
                     </ul>
                 </nav>
