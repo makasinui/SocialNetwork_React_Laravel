@@ -1,0 +1,36 @@
+a {
+	color: white;
+	&:visited {
+		color: white;
+	}
+	&:active {
+		color: #424E5C;
+	}
+}
+.header-main {
+	background-color: #424E5C;
+	color: white;
+	display: flex;
+	justify-content: space-between;
+}
+.logo-img {
+	display: flex;
+	margin: 5px;
+}
+.logo-txt {
+	display: block;
+	margin: auto;
+}
+.link-list {
+	display: flex;
+	height: 100%;
+	align-items: center;
+}
+.link {
+	display: block;
+	padding: 20px 50px;
+	margin-right: 25px;
+	&:hover {
+		background-color: #AFC5D8;
+	}
+}

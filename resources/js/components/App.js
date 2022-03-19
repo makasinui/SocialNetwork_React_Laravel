@@ -1,17 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Main from './Main'
 
 function App (){
     return(
-        <div>Hello world</div>
-    )
+        <Main />
+    );
 }
 
 export default App;
 
 if (document.getElementById('app')) {
     ReactDOM.render(
-        <App />
-        , document.getElementById('app'));
+        <App />, document.getElementById('app'));
 }
 
