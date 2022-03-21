@@ -1,5 +1,7 @@
 import '../../sass/header.scss'
+
 export default function Header() {
+    
     return(
         <header className='header-main'>
                 <a href="#" className="logo-img">

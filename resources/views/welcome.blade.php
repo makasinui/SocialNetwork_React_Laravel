@@ -15,6 +15,7 @@
         <div id="home">
         </div>
         
+        {{Auth::check()}}
         <script src="{{mix('js/app.js')}}"></script>
     </body>
 </html>

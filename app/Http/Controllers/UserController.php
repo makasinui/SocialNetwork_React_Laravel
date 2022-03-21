@@ -7,11 +7,14 @@ use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
-    public function showUsername()
+    public function index(Request $request)
     {
-        if (Auth::check()) {
-            return view('welcome', ['user' => Auth::user()->name]);
+        if(Auth::check()){
+            return Auth::user();
+        } else {
+            return response('Unauthorized');
         }
+        
     }
 }
 

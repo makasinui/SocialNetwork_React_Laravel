@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {createContext} from 'react';
 import Header from './Header'
 import Opportunities from './Opportunities';
 import '../../sass/main.scss'
@@ -6,8 +6,10 @@ import axios from 'axios';
 export default function Main() {
     axios.get('/api/current')
     .then(resp=>{
-        console.log(resp)
+        const user = React.createContext(resp.data)
     })
+
+
     return(
         <main>
             <Header />

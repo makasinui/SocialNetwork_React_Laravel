@@ -5537,7 +5537,7 @@ __webpack_require__.r(__webpack_exports__);
 
 function Main() {
   axios__WEBPACK_IMPORTED_MODULE_4___default().get('/api/current').then(function (resp) {
-    console.log(resp);
+    var user = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createContext(resp.data);
   });
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("main", {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_Header__WEBPACK_IMPORTED_MODULE_1__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("section", {
