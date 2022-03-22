@@ -14,8 +14,9 @@
     <body>
         <div id="home">
         </div>
-        
-        {{Auth::check()}}
+        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+            @csrf
+        </form>
         <script src="{{mix('js/app.js')}}"></script>
     </body>
 </html>

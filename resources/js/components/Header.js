@@ -20,20 +20,11 @@ function IsAuthorized(){
         return(
             
             <>
-                {/* <li className='link'>
-                    Пользователь: {user.name}
-                </li> */}
-                {/* <a href="./logout">
-                    <li className="link">Выйти</li>
-                </a> */}
                 <div>
-                    <a className="dropdown-item" href="./logout"
+                    <a  href="./logout"
                         onClick={(e)=>{e.preventDefault();document.getElementById('logout-form').submit()}}>
-                        Выйти
+                        <li className='link'>Выйти</li>
                     </a>
-
-                    <form id="logout-form" action="./logout" method="POST" className="d-none">
-                    </form>
                 </div>
                 
             </>
@@ -57,8 +48,7 @@ export default function Header() {
                         <li className="link">Контакты</li>
                         <li className="link">Помощь</li>
                         <IsAuthorized />
-                        
-                        {/* <li className="link">Выход</li> */}
+                    
                     </ul>
                 </nav>
                 
