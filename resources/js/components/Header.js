@@ -1,7 +1,49 @@
+import { useState } from 'react';
 import '../../sass/header.scss'
+import { checkUser } from './Main';
 
+function IsAuthorized(){
+    const user = checkUser();
+    if(user === 'Unauthorized'){
+        return(
+            <>
+                <a href='./login'>
+                    <li className="link">Войти</li>
+                </a>
+                <a href='./register'>
+                    <li className="link">Зарегистрироваться</li>
+                </a>
+                
+            </>
+        )
+    } else {
+        return(
+            
+            <>
+                {/* <li className='link'>
+                    Пользователь: {user.name}
+                </li> */}
+                {/* <a href="./logout">
+                    <li className="link">Выйти</li>
+                </a> */}
+                <div>
+                    <a className="dropdown-item" href="./logout"
+                        onClick={(e)=>{e.preventDefault();document.getElementById('logout-form').submit()}}>
+                        Выйти
+                    </a>
+
+                    <form id="logout-form" action="./logout" method="POST" className="d-none">
+                    </form>
+                </div>
+                
+            </>
+        )
+    }
+}
 export default function Header() {
     
+    /* const user = (checkUser().then(resp=>{return resp}))
+     */
     return(
         <header className='header-main'>
                 <a href="#" className="logo-img">
@@ -14,12 +56,8 @@ export default function Header() {
                         <li className="link">Главная</li>
                         <li className="link">Контакты</li>
                         <li className="link">Помощь</li>
-                        <a href="./login">
-                            <li className="link">Авторизация</li>
-                        </a>
-                        <a href="./register">
-                            <li className="link">Регистрация</li>
-                        </a>
+                        <IsAuthorized />
+                        
                         {/* <li className="link">Выход</li> */}
                     </ul>
                 </nav>

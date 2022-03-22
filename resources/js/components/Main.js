@@ -1,21 +1,29 @@
-import React, {createContext} from 'react';
+import React, {createContext, useState} from 'react';
 import Header from './Header'
 import Opportunities from './Opportunities';
 import '../../sass/main.scss'
 import axios from 'axios';
-export default function Main() {
+
+
+export function checkUser() {
+    const [user, setUser] = useState('')
     axios.get('/api/current')
     .then(resp=>{
-        const user = React.createContext(resp.data)
+        setUser(resp.data)
     })
+    return user;
+}
 
+
+export default function Main() {
+    
 
     return(
         <main>
             <Header />
             <section className="main-top">
             <section className="main-top-content">
-                <a href="#code" className="main-top-button">Начать</a>
+                <a href="" className="main-top-button">Начать</a>
                 <div className="main-top-txt">Начинающая соц.сеть!</div>
             </section>
             </section>
