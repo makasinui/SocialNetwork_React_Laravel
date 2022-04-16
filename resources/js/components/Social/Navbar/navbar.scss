@@ -1,0 +1,33 @@
+.navbar-section{
+    float:left;
+    padding-right: 5%;
+}
+
+.nav-items{
+    padding: 0;
+}
+
+.nav-item{
+    list-style-type: none;
+    margin-bottom: 8%;
+}
+
+.nav-text{
+    font-family:'Open Sans';
+    font-size: 16px;
+}
+
+.fa{
+    padding-left: 2%;
+    width: 35px;
+}
+
+.navbar-nav{
+    background-color:#16171dce;
+    opacity: 0.8;
+    border:1px solid #16171d1f;
+    border-radius: 5%;
+    min-width: 170px;
+    padding:20px;
+    padding-left:0;
+}

@@ -93,11 +93,6 @@ export default function Header() {
 
             <nav className="navigation">
                 <ul className="link-list">
-                    <li className="link">
-                        <Link to="/">Главная</Link>
-                    </li>
-                    <li className="link">Контакты</li>
-                    <li className="link">Помощь</li>
                     <IsAuthorized />
                 </ul>
             </nav>

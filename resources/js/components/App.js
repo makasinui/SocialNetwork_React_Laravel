@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import Main from "./Main";
+import SocialIndex from './Social/SocialIndex'
 import Index from "./Admin/Index";
 import { IsAdmin } from "./Header";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -18,6 +19,7 @@ function App() {
                         </IsAdmin>
                     }
                 />
+                <Route path='index' element={<SocialIndex />} />
             </Routes>
         </BrowserRouter>
     );
