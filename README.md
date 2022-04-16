@@ -15,14 +15,14 @@ composer C:\Users\ВашПользователя\AppData\Roaming\Composer\vendor
 # ENV файл
 Создаём файл .env, копируем из .env.example всё и ставим следующие переменные как: <br>
 ```
-DB_DATABASE=social <br>
-DB_USERNAME=root <br>
-DB_PASSWORD= <br>
+DB_DATABASE=social 
+DB_USERNAME=root 
+DB_PASSWORD= 
 ```
 # Laravel<br>
 ```
-php artisan key:generate <br>
-php artisan migrate <br>
+php artisan key:generate
+php artisan migrate 
 ```
 # Старт проекта <br>
 Нужно открыть 2 консоли, в первой прописать ```php artisan serve```, во второй ```npm run watch```
