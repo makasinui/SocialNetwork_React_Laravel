@@ -15,12 +15,11 @@ use App\Http\Controllers\UserController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Auth::routes();
 
+Route::get('/{view?}', function () {
+    return view('welcome');
+})->where('view', '(.*)');
 
 /* 
 Route::get('/test', [TestController::class,'show']); 

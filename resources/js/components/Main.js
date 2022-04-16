@@ -1,23 +1,8 @@
-import React, {createContext, useState} from 'react';
+import React from 'react';
 import Header from './Header'
 import Opportunities from './Opportunities';
 import '../../sass/main.scss'
-import axios from 'axios';
-
-
-export function checkUser() {
-    const [user, setUser] = useState('')
-    axios.get('/api/current')
-    .then(resp=>{
-        setUser(resp.data)
-    })
-    return user;
-}
-
-
 export default function Main() {
-    
-
     return(
         <main>
             <Header />
