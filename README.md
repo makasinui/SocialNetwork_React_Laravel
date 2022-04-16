@@ -13,7 +13,7 @@ composer C:\Users\ВашПользователя\AppData\Roaming\Composer\vendor
 Прописываем в папке composer install, затем npm install <br>
 
 # ENV файл
-Заходим в файл .env и ставим следующие переменные как: <br>
+Создаём файл .env, копируем из .env.example всё и ставим следующие переменные как: <br>
 
 DB_DATABASE=social <br>
 DB_USERNAME=root <br>
