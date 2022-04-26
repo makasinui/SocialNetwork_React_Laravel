@@ -1,5 +1,6 @@
 import "./profile-dropdown.scss";
-import {getName} from '../../../../helpers/IsAuthorized'
+import {getName} from '../../../../helpers/User'
+import AdminPanel from "../../../../helpers/AdminPanel";
 import * as React from "react";
 import Box from "@mui/material/Box";
 import Avatar from "@mui/material/Avatar";
@@ -95,6 +96,7 @@ export default function ProfileDropdown() {
                     </ListItemIcon>
                     Настройки
                 </MenuItem>
+                <AdminPanel />
                 <MenuItem
                     onClick={(e) => {
                         e.preventDefault();

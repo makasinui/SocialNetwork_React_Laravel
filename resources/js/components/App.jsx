@@ -4,7 +4,7 @@ import Main from "./Main";
 import SocialIndex from './social/SocialIndex'
 import AdminIndex from "./admin/AdminIndex";
 import IsAdmin from "./helpers/IsAdmin";
-import IsAuthorized from './helpers/IsAuthorized'
+import CheckAuthorized from './helpers/User'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
@@ -21,9 +21,9 @@ function App() {
                     }
                 />
                 <Route path='index' element={
-                <IsAuthorized>
+                <CheckAuthorized>
                     <SocialIndex />
-                </IsAuthorized>
+                </CheckAuthorized>
                 } />
             </Routes>
         </BrowserRouter>
