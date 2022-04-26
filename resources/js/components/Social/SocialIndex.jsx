@@ -4,9 +4,9 @@ import Navbar from "./Navbar/Navbar"
 import Main from "./Main/Main"
 export default function SocialIndex() {
  return(
-     <React.Fragment style="background:black;">
+     <React.Fragment>
         <Header />
-        <main className="container">
+        <main className="container social-index">
             <Navbar />
             <Main />
         </main>

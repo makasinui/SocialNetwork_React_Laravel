@@ -10,6 +10,11 @@
 .nav-item{
     list-style-type: none;
     margin-bottom: 8%;
+    &:hover{
+        background-color: #e7e7e7bb;
+        border-left: 3px solid #e7e7e7bb;
+    }
+    cursor:pointer;
 }
 
 .nav-text{
@@ -23,9 +28,9 @@
 }
 
 .navbar-nav{
-    background-color:#16171dce;
+    background-color:#606580ce;
     opacity: 0.8;
-    border:1px solid #16171d1f;
+
     border-radius: 5%;
     min-width: 170px;
     padding:20px;

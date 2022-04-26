@@ -1,9 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import Main from "./Main";
-import SocialIndex from './Social/SocialIndex'
-import Index from "./Admin/Index";
-import { IsAdmin } from "./Header";
+import SocialIndex from './social/SocialIndex'
+import AdminIndex from "./admin/AdminIndex";
+import IsAdmin from "./helpers/IsAdmin";
+import IsAuthorized from './helpers/IsAuthorized'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
@@ -15,11 +16,15 @@ function App() {
                     path="admin"
                     element={
                         <IsAdmin>
-                            <Index />
+                            <AdminIndex />
                         </IsAdmin>
                     }
                 />
-                <Route path='index' element={<SocialIndex />} />
+                <Route path='index' element={
+                <IsAuthorized>
+                    <SocialIndex />
+                </IsAuthorized>
+                } />
             </Routes>
         </BrowserRouter>
     );

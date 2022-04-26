@@ -1,32 +1,29 @@
 import "./header.scss";
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import ProfileDropdown from "../profile/components/profile-dropdown/ProfileDropdown";
+
+
+
 export default function Header() {
+
+
     return (
         <header className="social-header container">
             <div className="social-logo">
-                <Link to='/'><img src="/img/icon.png" alt="Logo" className="logo-img" /></Link>
+                <Link to="/">
+                    <img src="/img/icon.png" alt="Logo" className="logo-img" />
+                </Link>
             </div>
-            {/* <div className="social-search">
-                <input
-                    type="search"
-                    name="social-search"
-                    className="search-input"
-                    placeholder="Поиск..."
-                />
-            </div> */}
-            <div className="social-user">
-                <a href="">
-                    <img
-                        src="https://healthage.ru/wp-content/uploads/2019/04/empty-woman.png"
-                        alt="user-logo"
-                        className="user-logo"
-                    />
-                </a>
+
+            <div className="social-user" >
+                    <div className="social-user__profile">
+                       <ProfileDropdown />
+                    </div>
                 <a href="">
                     <svg
                         width="24px"
                         height="24px"
-                        
                         viewBox="0 0 24 24"
                         xmlns="http://www.w3.org/2000/svg"
                     >
@@ -40,7 +37,6 @@ export default function Header() {
                 </a>
                 {/* нужно добавить лупу */}
             </div>
-           
         </header>
     );
 }

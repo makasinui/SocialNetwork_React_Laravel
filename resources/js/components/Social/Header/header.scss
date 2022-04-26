@@ -19,6 +19,12 @@
 .social-user{
     @include alignCenter();
     margin-left: auto;
+    position: relative;
+    cursor:pointer;
+}
+
+.social-user__profile {
+    margin-right: 20px;
 }
 
 .search-input {
