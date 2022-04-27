@@ -61,11 +61,19 @@
                             </div>
                         </div>
 
-                        <div class="row mb-0">
+                        <div class="row mb-3">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Зарегестрироваться') }}
                                 </button>
+                            </div>
+                        </div>
+
+                        <div class="row mt-12">
+                            <div class="col-md-8 offset-md-4">
+                                <a class="btn btn-link" href="{{ route('login') }}">
+                                    {{ __('Войти') }}
+                                </a>
                             </div>
                         </div>
                     </form>

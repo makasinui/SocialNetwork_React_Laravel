@@ -1,7 +1,12 @@
 import "./profile-dropdown.scss";
-import {getName} from '../../../../helpers/User'
-import AdminPanel from "../../../../helpers/AdminPanel";
+
 import * as React from "react";
+
+
+import { getName } from "../../../../helpers/User";
+import AdminPanel from "../../../../helpers/AdminPanel";
+import { Link } from "react-router-dom";
+
 import Box from "@mui/material/Box";
 import Avatar from "@mui/material/Avatar";
 import Menu from "@mui/material/Menu";
@@ -36,7 +41,6 @@ export default function ProfileDropdown() {
             >
                 <Typography> Добро пожаловать, {getName()} </Typography>
                 <Tooltip title="Account settings">
-                    
                     <IconButton
                         onClick={handleClick}
                         size="small"
@@ -85,9 +89,11 @@ export default function ProfileDropdown() {
                 transformOrigin={{ horizontal: "right", vertical: "top" }}
                 anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
             >
-                <MenuItem>
-                    <Avatar /> Профиль
-                </MenuItem>
+                <Link to='/profile'>
+                    <MenuItem>
+                        <Avatar /> Профиль
+                    </MenuItem>
+                </Link>
 
                 <Divider />
                 <MenuItem>

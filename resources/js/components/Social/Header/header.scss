@@ -3,10 +3,9 @@
     align-items: center;
 }
 
-.social-logo{
+.social-logo {
     flex-basis: 10%;
 }
-
 
 .social-header,
 .social-logo {
@@ -17,11 +16,11 @@
     width: 60px;
 }
 
-.social-user{
+.social-user {
     @include alignCenter();
     margin-left: auto;
     position: relative;
-    cursor:pointer;
+    cursor: pointer;
 }
 
 .social-user__profile {
@@ -31,25 +30,25 @@
 .search-input {
     width: 400px;
     background-color: none;
-    border:none;
+    border: none;
     outline: none;
 }
 
-.search-item__loop{
+.search-item__loop {
     width: 20px;
     max-width: 100%;
 }
 
-.social-notifications{
+.social-notifications {
     margin-left: auto;
-    border:1px solid gray;
-    color:gray;
+    border: 1px solid gray;
+    color: gray;
     opacity: 0.5;
     padding: 10px;
     border-radius: 50%;
 }
 
-.user-logo{
+.user-logo {
     width: 35px;
-    margin:0 10px;
+    margin: 0 10px;
 }
