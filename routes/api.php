@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\NewsController;
+use App\Http\Controllers\LikesController;
 use App\Http\Middleware\User;
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
@@ -18,5 +19,9 @@ Route::resources([
 
 Route::resources([
     'users' => UserController::class
+]);
+
+Route::resources([
+    'likes' => LikesController::class
 ]);
 

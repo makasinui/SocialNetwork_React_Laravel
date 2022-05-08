@@ -23,8 +23,8 @@ export const NavbarItems = ()=> {
     return(
         <div>
             {items.map(item =>    
-                <Link to={item.url}>
-                    <li className="nav-item" key={item.id}>
+                <Link to={item.url} key={item.id}>
+                    <li className="nav-item">
                         {item.icon}
                         <span className="nav-text">{item.text}</span>
                     </li>
