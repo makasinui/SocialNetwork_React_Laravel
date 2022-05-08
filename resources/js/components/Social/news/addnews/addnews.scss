@@ -1,0 +1,20 @@
+.main-input {
+    display: flex;
+    align-items: center;
+    width:1000px;
+    padding:5px;
+    border:1px solid black;
+    border-radius: 10px;
+}
+
+.main__input {
+    padding-left:20px;
+    outline: none;
+    background:none;
+    width:100%;
+    border:none;
+}
+
+.main__send{
+    cursor:pointer;
+}

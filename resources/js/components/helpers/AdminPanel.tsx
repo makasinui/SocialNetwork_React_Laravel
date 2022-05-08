@@ -15,7 +15,7 @@ export default function AdminPanel() {
         });
     }, []);
     
-    if (user?.role === "admin") {
+    if (user?.role === 'admin') {
         return (
             <Link to="admin">
                 <MenuItem>

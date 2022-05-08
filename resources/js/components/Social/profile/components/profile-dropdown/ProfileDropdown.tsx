@@ -48,7 +48,7 @@ export default function ProfileDropdown() {
                         aria-haspopup="true"
                         aria-expanded={open ? "true" : undefined}
                     >
-                        <Avatar sx={{ width: 32, height: 32 }}>M</Avatar>
+                        <Avatar sx={{ width: 32, height: 32 }}>{getName()?.charAt(0)}</Avatar>
                         <ArrowDropDownIcon />
                     </IconButton>
                 </Tooltip>

@@ -10,7 +10,7 @@ export const CheckAuthorized:React.FunctionComponent<Children> = ({children}) =>
         });
     }, []);
 
-    if (user?.name === "Unauthorized") {
+    if (typeof(user) === 'string') {
        return (
            <>
             {window.location.href='/login'}

@@ -15,7 +15,7 @@ export default function HeaderIsAuthorized() {
         });
     }, []);
 
-    if (user?.name === "Unauthorized") {
+    if (typeof(user) === 'string') {
         return (
             <>
                 <a href="./login">
