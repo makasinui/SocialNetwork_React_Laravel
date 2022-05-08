@@ -1,11 +1,10 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { IUser, Children } from "./Interfaces";
 
-export const IsAdmin:React.FunctionComponent<Children> = ({ children }) => {
-    const [user, setUser] = useState<IUser>();
+export const IsAdmin = ({ children }) => {
+    const [user, setUser] = useState();
     useEffect(() => {
-        axios.get<IUser>("/api/current").then(({data}) => {
+        axios.get("/api/current").then(({data}) => {
             setUser(data);
         });
     }, []);

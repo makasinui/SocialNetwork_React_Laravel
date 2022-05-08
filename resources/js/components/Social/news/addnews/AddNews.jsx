@@ -6,19 +6,14 @@ import Avatar from "@mui/material/Avatar";
 import SendRoundedIcon from "@mui/icons-material/SendRounded";
 import { getName } from "../../../helpers/User";
 
-export const AddNews: React.FunctionComponent = () => {
-    const [text, setText] = useState<String>("");
-    const userId:any = getUserId();
-
-    interface AddNewNews {
-        text:string;
-        user_id:number;
-    }
+export const AddNews = () => {
+    const [text, setText] = useState("");
+    const userId = getUserId();
 
     
     function handleClick() {
         if(text) {
-            axios.post<AddNewNews>('/api/news',{
+            axios.post('/api/news',{
                 text:text,
                 user_id:userId
             }).then(()=>{

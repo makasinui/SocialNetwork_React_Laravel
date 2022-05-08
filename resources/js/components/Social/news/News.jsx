@@ -6,22 +6,27 @@ import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { INews } from "../../helpers/GetNews";
 import "./news.scss";
-import { getUserId } from "../../helpers/User";
+import { getUser,getUserId } from "../../helpers/User";
+export const News = () => {
+    const [news, setNews] = useState();
 
-export interface NewsItems {
-    news: INews[];
-}
-
-export const News: React.FunctionComponent = () => {
-    const [news, setNews] = useState<INews>();
     const userID = getUserId();
+
+    const [user,setUser] = useState();
+
     useEffect(() => {
-        axios.get<INews>("/api/news").then(({ data }) => {
+        axios.get("/api/news").then(({ data }) => {
             setNews(data);
         });
+        axios.get('/api/users/'+userID).then(({data})=>{
+            setUser(data)
+            console.log(user)
+        })
     }, []);
 
-    function handleClick(id: any) {
+
+
+    function handleClick(id) {
         axios
             .delete("/api/news/" + id)
             .then(() => {
@@ -33,7 +38,7 @@ export const News: React.FunctionComponent = () => {
             });
     }
 
-    function GetDate(date: number) {
+    function GetDate(date) {
         let newDate = new Date(date).toLocaleDateString();
 
         return newDate;
@@ -42,7 +47,7 @@ export const News: React.FunctionComponent = () => {
     return (
         <div>
             {news?.data
-                ? news.data.map((item: any) => (
+                ? news.data.map((item) => (
                       <div key={item.id} className="news-item">
                           <div className="news-user">
                               <Avatar sx={{ width: 40, height: 40 }}>

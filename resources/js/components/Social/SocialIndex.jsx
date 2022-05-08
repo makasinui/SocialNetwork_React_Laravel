@@ -3,7 +3,7 @@ import {Header} from "./header/Header";
 import {Navbar} from "./navbar/Navbar";
 import {Main} from "./main/Main";
 
-export const SocialIndex:React.FunctionComponent = ()=> {
+export const SocialIndex = ()=> {
     return (
         <React.Fragment>
             <Header />

@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
 import axios from 'axios'
-import { IUser, Children } from "./Interfaces";
 
-export const CheckAuthorized:React.FunctionComponent<Children> = ({children}) => {
-    const [user, setUser] = useState<IUser>();
+export const CheckAuthorized = ({children}) => {
+    const [user, setUser] = useState();
     useEffect(() => {
-        axios.get<IUser>("/api/current").then(({data}) => {
+        axios.get("/api/current").then(({data}) => {
             setUser(data);
         });
     }, []);
@@ -21,10 +20,10 @@ export const CheckAuthorized:React.FunctionComponent<Children> = ({children}) =>
     }
 }
 
-export function getUser() {
-    const [user, setUser] = useState<IUser>();
+export function getUser(id) {
+    const [user, setUser] = useState();
     useEffect(() => {
-        axios.get<IUser>("/api/current").then(({data}) => {
+        axios.get("/api/users/"+id).then(({data}) => {
             setUser(data);
         });
     }, []);
@@ -33,9 +32,9 @@ export function getUser() {
 }
 
 export function getUserId() {
-    const [user, setUser] = useState<IUser>();
+    const [user, setUser] = useState();
     useEffect(() => {
-        axios.get<IUser>("/api/current").then(({data}) => {
+        axios.get("/api/current").then(({data}) => {
             setUser(data);
         });
     }, []);
@@ -44,9 +43,9 @@ export function getUserId() {
 }
 
 export function getName() {
-    const [user, setUser] = useState<IUser>();
+    const [user, setUser] = useState();
     useEffect(() => {
-        axios.get<IUser>("/api/current").then(({data}) => {
+        axios.get("/api/current").then(({data}) => {
             setUser(data);
         });
     }, []);
@@ -55,9 +54,9 @@ export function getName() {
 }
 
 export function getRole() {
-    const [user, setUser] = useState<IUser>();
+    const [user, setUser] = useState();
     useEffect(() => {
-        axios.get<IUser>("/api/current").then(({data}) => {
+        axios.get("/api/current").then(({data}) => {
             setUser(data);
         });
     }, []);

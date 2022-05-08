@@ -2,7 +2,7 @@ import React from 'react'
 import "../../sass/opportunities.scss";
 
 
-export const Opportunities: React.FunctionComponent = () => {
+export const Opportunities = () => {
     return(
         <section className="top">
             <div>

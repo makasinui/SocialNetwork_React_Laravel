@@ -22,5 +22,11 @@ class UserController extends Controller
     {
         return UsersResource::collection(User::get());
     }
+
+    public function show($id)
+    {
+        return new UsersResource(User::findOrFail($id));
+    }
+
 }
 

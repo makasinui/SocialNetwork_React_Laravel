@@ -4,7 +4,7 @@ import {Opportunities} from "./Opportunities";
 import { Link } from "react-router-dom";
 import "../../sass/main.scss";
 
-export const Main:React.FunctionComponent = ()=> {
+export const Main = ()=> {
     return (
         <main>
             <Header />

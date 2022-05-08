@@ -5,7 +5,7 @@ import { AddNews } from "../news/addnews/AddNews";
 import { News} from '../news/News'
 
 
-export const Main:React.FunctionComponent = () => {
+export const Main = () => {
     return (
         <section className="social-main">
             <h1>Последняя активность</h1>

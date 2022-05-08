@@ -21,9 +21,9 @@ import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import { Typography } from "@mui/material";
 
 export default function ProfileDropdown() {
-    const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+    const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
-    const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+    const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
     };
     const handleClose = () => {
@@ -105,7 +105,7 @@ export default function ProfileDropdown() {
                 <MenuItem
                     onClick={(e) => {
                         e.preventDefault();
-                        (document.getElementById("logout-form") as HTMLFormElement).submit();
+                        document.getElementById("logout-form").submit();
                     }}
                 >
                     <ListItemIcon>

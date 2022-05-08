@@ -2,7 +2,7 @@ import React from 'react'
 import "../../sass/header.scss";
 import HeaderIsAuthorized from "./helpers/HeaderIsAuthorized";
 
-export const Header:React.FunctionComponent = ()=> {
+export const Header = ()=> {
     return (
         <header className="header-main">
             <a href="#" className="logo-img">

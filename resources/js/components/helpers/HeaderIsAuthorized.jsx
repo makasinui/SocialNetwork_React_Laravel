@@ -2,14 +2,13 @@
 import React, { useState, useEffect } from "react";
 import axios from 'axios'
 import { Link } from "react-router-dom";
-import { IUser } from "./Interfaces";
 
 export default function HeaderIsAuthorized() {
 
-    const [user, setUser] = useState<IUser>();
+    const [user, setUser] = useState();
 
     useEffect(() => {
-        axios.get<IUser>("/api/current")
+        axios.get("/api/current")
         .then(({data}) => {
             setUser(data);
         });
@@ -40,7 +39,7 @@ export default function HeaderIsAuthorized() {
                             href="./logout"
                             onClick={(e) => {
                                 e.preventDefault();
-                                (document.getElementById("logout-form") as HTMLFormElement).submit();
+                                document.getElementById("logout-form").submit();
                             }}
                         >
                             <li className="link">Выйти</li>
@@ -56,7 +55,7 @@ export default function HeaderIsAuthorized() {
                         href="./logout"
                         onClick={(e) => {
                             e.preventDefault();
-                            (document.getElementById("logout-form") as HTMLFormElement).submit();
+                            document.getElementById("logout-form").submit();
                         }}
                     >
                         <li className="link">Выйти</li>

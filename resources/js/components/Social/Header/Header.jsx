@@ -3,7 +3,7 @@ import "./header.scss";
 import { Link } from "react-router-dom";
 import ProfileDropdown from "../profile/components/profile-dropdown/ProfileDropdown";
 import NotificationsOutlinedIcon from "@mui/icons-material/NotificationsOutlined";
-export const Header:React.FunctionComponent = ()=> {
+export const Header = ()=> {
     return (
         <header className="social-header container">
             <div className="social-logo">

@@ -8,14 +8,8 @@ import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
 import GroupOutlinedIcon from '@mui/icons-material/GroupOutlined';
 import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
 
-export interface NavbarItems {
-    id:number;
-    icon:any;
-    url:string;
-    text:string;
-}
 
-export const items:Array<NavbarItems> = [
+export const items = [
     {id:1,icon:<HomeOutlinedIcon fontSize="medium" className='navbar__icon' />,text:'Новости', url:'/index'},
     {id:2,icon:<AccountCircleOutlinedIcon fontSize="medium" className='navbar__icon' />,text:'Профиль', url:'/profile'},
     {id:3,icon:<EmailOutlinedIcon fontSize="medium" className='navbar__icon' />,text:'Сообщения', url:'/msg'},
@@ -24,7 +18,7 @@ export const items:Array<NavbarItems> = [
     {id:6,icon:<SettingsOutlinedIcon fontSize="medium" className='navbar__icon' />,text:'Что я блять накодил?', url:'/settings'},
 ];
 
-export const NavbarItems:React.FunctionComponent = ()=> {
+export const NavbarItems = ()=> {
     
     return(
         <div>
