@@ -10,9 +10,13 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/current',[UserController::class,'index']);
+Route::get('/current',[UserController::class,'checkAuthorize']);
 
 Route::resources([
     'news' => NewsController::class
+]);
+
+Route::resources([
+    'users' => UserController::class
 ]);
 

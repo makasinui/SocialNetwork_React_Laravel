@@ -61,6 +61,6 @@ class NewsController extends Controller
     {
         $news->delete();
 
-        return response(null,Response::HTTP_NO_CONTENT);
+        return (true);
     }
 }

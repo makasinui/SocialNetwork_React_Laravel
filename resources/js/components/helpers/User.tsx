@@ -32,6 +32,17 @@ export function getUser() {
     return user;
 }
 
+export function getUserId() {
+    const [user, setUser] = useState<IUser>();
+    useEffect(() => {
+        axios.get<IUser>("/api/current").then(({data}) => {
+            setUser(data);
+        });
+    }, []);
+
+    return user?.id;
+}
+
 export function getName() {
     const [user, setUser] = useState<IUser>();
     useEffect(() => {
