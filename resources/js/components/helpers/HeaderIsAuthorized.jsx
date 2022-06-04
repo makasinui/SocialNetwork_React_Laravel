@@ -6,11 +6,15 @@ import { Link } from "react-router-dom";
 export default function HeaderIsAuthorized() {
 
     const [user, setUser] = useState();
-
     useEffect(() => {
+        localStorage.user
+        ? setUser(JSON.parse(localStorage.user)):
+        
         axios.get("/api/current")
         .then(({data}) => {
             setUser(data);
+            if(data!=='Unauthorized')
+                localStorage.setItem('user', JSON.stringify(data))
         });
     }, []);
 
@@ -40,6 +44,7 @@ export default function HeaderIsAuthorized() {
                             onClick={(e) => {
                                 e.preventDefault();
                                 document.getElementById("logout-form").submit();
+                                localStorage.removeItem('user')
                             }}
                         >
                             <li className="link">Выйти</li>
@@ -56,6 +61,7 @@ export default function HeaderIsAuthorized() {
                         onClick={(e) => {
                             e.preventDefault();
                             document.getElementById("logout-form").submit();
+                            localStorage.removeItem('user')
                         }}
                     >
                         <li className="link">Выйти</li>

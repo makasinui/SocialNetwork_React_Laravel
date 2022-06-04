@@ -106,6 +106,7 @@ export default function ProfileDropdown() {
                     onClick={(e) => {
                         e.preventDefault();
                         document.getElementById("logout-form").submit();
+                        localStorage.removeItem('user')
                     }}
                 >
                     <ListItemIcon>

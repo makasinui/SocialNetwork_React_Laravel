@@ -16,16 +16,19 @@ export const News = () => {
     const [likes, setLikes] = useState();
 
     useEffect(() => {
-        mount();
+        getNews();
+        localStorage.user?setUserID(JSON.parse(localStorage.user).id):
         axios.get("/api/current").then(({ data }) => {
             setUserID(data?.id)
+            if(data!=='Unauthorized')
+                localStorage.setItem('user', JSON.stringify(data))
         });
         getLikes();
     }, [userID]);
 
-    function mount() {
+    function getNews() {
         axios.get("/api/news").then(({ data }) => {
-            setNews(data);
+            setNews(data.data.reverse());
         });
     }
 
@@ -41,7 +44,7 @@ export const News = () => {
         axios
             .delete("/api/news/" + id)
             .then(() => {
-                mount()
+                getNews()
             })
             .catch((e) => {
                 throw new Error(e);
@@ -50,16 +53,30 @@ export const News = () => {
 
     function handleClickLike(news_id, user_id, isLike, likeId = 0) {
         if(!isLike) {
+            const new_likes = [...likes]
+            const last_index = [...likes].pop()
+
+            new_likes.push({
+                id:last_index?.id+1,
+                user_id:user_id,
+                news_id:news_id
+            })
+
+            setLikes(new_likes)
+            
             axios.post('/api/likes/',{
                 'news_id':news_id,
                 'user_id':user_id
-            })
-            .then(()=>{
-                getLikes()
-            })
+            }).then(getLikes())
         } else {
+            const new_likes = [...likes]
+            const like = new_likes.findIndex((like)=>like.id===likeId)
+            delete new_likes[like]
+
+            setLikes(new_likes.filter(Boolean))
+
             axios.delete(`/api/likes/${likeId}`).then(()=>{
-                getLikes()
+                
             })
         }
     }
@@ -94,8 +111,8 @@ export const News = () => {
 
     return (
         <div>
-            {news?.data && likes ? (
-                news.data.map((item,i) => (
+            {news && likes ? (
+                news.map((item,i) => (
                     <div key={item.id} className="news-item">
                         <div className="news-user">
                             <Avatar sx={{ width: 40, height: 40 }}>

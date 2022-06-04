@@ -10,6 +10,7 @@ import { Link } from "react-router-dom";
 export default function AdminPanel() {
     const [user, setUser] = useState();
     useEffect(() => {
+        localStorage.user?setUser(JSON.parse(localStorage.user)):
         axios.get("/api/current").then(({data}) => {
             setUser(data);
         });

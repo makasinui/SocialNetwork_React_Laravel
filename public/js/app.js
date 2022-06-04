@@ -26284,7 +26284,7 @@ function AdminPanel() {
       setUser = _useState2[1];
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    axios__WEBPACK_IMPORTED_MODULE_1___default().get("/api/current").then(function (_ref) {
+    localStorage.user ? setUser(JSON.parse(localStorage.user)) : axios__WEBPACK_IMPORTED_MODULE_1___default().get("/api/current").then(function (_ref) {
       var data = _ref.data;
       setUser(data);
     });
@@ -26349,9 +26349,10 @@ function HeaderIsAuthorized() {
       setUser = _useState2[1];
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    axios__WEBPACK_IMPORTED_MODULE_1___default().get("/api/current").then(function (_ref) {
+    localStorage.user ? setUser(JSON.parse(localStorage.user)) : axios__WEBPACK_IMPORTED_MODULE_1___default().get("/api/current").then(function (_ref) {
       var data = _ref.data;
       setUser(data);
+      if (data !== 'Unauthorized') localStorage.setItem('user', JSON.stringify(data));
     });
   }, []);
 
@@ -26388,6 +26389,7 @@ function HeaderIsAuthorized() {
             onClick: function onClick(e) {
               e.preventDefault();
               document.getElementById("logout-form").submit();
+              localStorage.removeItem('user');
             },
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("li", {
               className: "link",
@@ -26405,6 +26407,7 @@ function HeaderIsAuthorized() {
           onClick: function onClick(e) {
             e.preventDefault();
             document.getElementById("logout-form").submit();
+            localStorage.removeItem('user');
           },
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("li", {
             className: "link",
@@ -26458,9 +26461,10 @@ var IsAdmin = function IsAdmin(_ref) {
       setUser = _useState2[1];
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    axios__WEBPACK_IMPORTED_MODULE_1___default().get("/api/current").then(function (_ref2) {
+    localStorage.user ? setUser(JSON.parse(localStorage.user)) : axios__WEBPACK_IMPORTED_MODULE_1___default().get("/api/current").then(function (_ref2) {
       var data = _ref2.data;
       setUser(data);
+      if (data !== 'Unauthorized') localStorage.setItem('user', JSON.stringify(data));
     });
   }, []);
 
@@ -26521,7 +26525,7 @@ var CheckAuthorized = function CheckAuthorized(_ref) {
       setUser = _useState2[1];
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    axios__WEBPACK_IMPORTED_MODULE_1___default().get("/api/current").then(function (_ref2) {
+    localStorage.user ? setUser(JSON.parse(localStorage.user)) : axios__WEBPACK_IMPORTED_MODULE_1___default().get("/api/current").then(function (_ref2) {
       var data = _ref2.data;
       setUser(data);
     });
@@ -26544,7 +26548,7 @@ function getUser(id) {
       setUser = _useState4[1];
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    axios__WEBPACK_IMPORTED_MODULE_1___default().get("/api/users/" + id).then(function (_ref3) {
+    localStorage.user ? setUser(JSON.parse(localStorage.user)) : axios__WEBPACK_IMPORTED_MODULE_1___default().get("/api/users/" + id).then(function (_ref3) {
       var data = _ref3.data;
       setUser(data);
     });
@@ -26558,7 +26562,7 @@ function getUserId() {
       setUser = _useState6[1];
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    axios__WEBPACK_IMPORTED_MODULE_1___default().get("/api/current").then(function (_ref4) {
+    localStorage.user ? setUser(JSON.parse(localStorage.user)) : axios__WEBPACK_IMPORTED_MODULE_1___default().get("/api/current").then(function (_ref4) {
       var data = _ref4.data;
       setUser(data);
     });
@@ -26572,7 +26576,7 @@ function getName() {
       setUser = _useState8[1];
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    axios__WEBPACK_IMPORTED_MODULE_1___default().get("/api/current").then(function (_ref5) {
+    localStorage.user ? setUser(JSON.parse(localStorage.user)) : axios__WEBPACK_IMPORTED_MODULE_1___default().get("/api/current").then(function (_ref5) {
       var data = _ref5.data;
       setUser(data);
     });
@@ -26586,7 +26590,7 @@ function getRole() {
       setUser = _useState10[1];
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    axios__WEBPACK_IMPORTED_MODULE_1___default().get("/api/current").then(function (_ref6) {
+    localStorage.user ? setUser(JSON.parse(localStorage.user)) : axios__WEBPACK_IMPORTED_MODULE_1___default().get("/api/current").then(function (_ref6) {
       var data = _ref6.data;
       setUser(data);
     });
@@ -26871,6 +26875,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _mui_material_CircularProgress__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @mui/material/CircularProgress */ "./node_modules/@mui/material/CircularProgress/CircularProgress.js");
 /* harmony import */ var _mui_icons_material_Favorite__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @mui/icons-material/Favorite */ "./node_modules/@mui/icons-material/Favorite.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -26910,18 +26922,19 @@ var News = function News() {
       setLikes = _useState6[1];
 
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
-    mount();
-    axios__WEBPACK_IMPORTED_MODULE_2___default().get("/api/current").then(function (_ref) {
+    getNews();
+    localStorage.user ? setUserID(JSON.parse(localStorage.user).id) : axios__WEBPACK_IMPORTED_MODULE_2___default().get("/api/current").then(function (_ref) {
       var data = _ref.data;
       setUserID(data === null || data === void 0 ? void 0 : data.id);
+      if (data !== 'Unauthorized') localStorage.setItem('user', JSON.stringify(data));
     });
     getLikes();
   }, [userID]);
 
-  function mount() {
+  function getNews() {
     axios__WEBPACK_IMPORTED_MODULE_2___default().get("/api/news").then(function (_ref2) {
       var data = _ref2.data;
-      setNews(data);
+      setNews(data.data.reverse());
     });
   }
 
@@ -26936,7 +26949,7 @@ var News = function News() {
 
   function handleClickDelete(id) {
     axios__WEBPACK_IMPORTED_MODULE_2___default()["delete"]("/api/news/" + id).then(function () {
-      mount();
+      getNews();
     })["catch"](function (e) {
       throw new Error(e);
     });
@@ -26946,16 +26959,30 @@ var News = function News() {
     var likeId = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 0;
 
     if (!isLike) {
+      var new_likes = _toConsumableArray(likes);
+
+      var last_index = _toConsumableArray(likes).pop();
+
+      new_likes.push({
+        id: (last_index === null || last_index === void 0 ? void 0 : last_index.id) + 1,
+        user_id: user_id,
+        news_id: news_id
+      });
+      setLikes(new_likes);
       axios__WEBPACK_IMPORTED_MODULE_2___default().post('/api/likes/', {
         'news_id': news_id,
         'user_id': user_id
-      }).then(function () {
-        getLikes();
-      });
+      }).then(getLikes());
     } else {
-      axios__WEBPACK_IMPORTED_MODULE_2___default()["delete"]("/api/likes/".concat(likeId)).then(function () {
-        getLikes();
+      var _new_likes = _toConsumableArray(likes);
+
+      var like = _new_likes.findIndex(function (like) {
+        return like.id === likeId;
       });
+
+      delete _new_likes[like];
+      setLikes(_new_likes.filter(Boolean));
+      axios__WEBPACK_IMPORTED_MODULE_2___default()["delete"]("/api/likes/".concat(likeId)).then(function () {});
     }
   }
 
@@ -26994,7 +27021,7 @@ var News = function News() {
   }
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-    children: news !== null && news !== void 0 && news.data && likes ? news.data.map(function (item, i) {
+    children: news && likes ? news.map(function (item, i) {
       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
         className: "news-item",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
@@ -27305,6 +27332,7 @@ function ProfileDropdown() {
         onClick: function onClick(e) {
           e.preventDefault();
           document.getElementById("logout-form").submit();
+          localStorage.removeItem('user');
         },
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material_ListItemIcon__WEBPACK_IMPORTED_MODULE_15__["default"], {
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_icons_material_Logout__WEBPACK_IMPORTED_MODULE_17__["default"], {
@@ -32513,7 +32541,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".news-user {\n  display: flex;\n}\n\n.user-info {\n  display: flex;\n  flex-direction: column;\n  margin-left: 2%;\n}\n\n.user-text {\n  margin-top: 0.5%;\n}\n\n.news-item {\n  padding: 10px;\n  margin-top: 1%;\n  border: 1px solid black;\n  border-radius: 20px;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".news-user {\n  display: flex;\n}\n\n.user-info {\n  display: flex;\n  flex-direction: column;\n  margin-left: 2%;\n}\n\n.user-text {\n  margin-top: 0.5%;\n  word-break: break-all;\n}\n\n.news-item {\n  padding: 10px;\n  margin-top: 1%;\n  border: 1px solid black;\n  border-radius: 20px;\n  max-width: 1000px;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

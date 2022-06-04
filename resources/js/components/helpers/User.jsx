@@ -4,6 +4,7 @@ import axios from 'axios'
 export const CheckAuthorized = ({children}) => {
     const [user, setUser] = useState();
     useEffect(() => {
+        localStorage.user?setUser(JSON.parse(localStorage.user)):
         axios.get("/api/current").then(({data}) => {
             setUser(data);
         });
@@ -23,6 +24,7 @@ export const CheckAuthorized = ({children}) => {
 export function getUser(id) {
     const [user, setUser] = useState();
     useEffect(() => {
+        localStorage.user?setUser(JSON.parse(localStorage.user)):
         axios.get("/api/users/"+id).then(({data}) => {
             setUser(data);
         });
@@ -34,6 +36,7 @@ export function getUser(id) {
 export function getUserId() {
     const [user, setUser] = useState();
     useEffect(() => {
+        localStorage.user?setUser(JSON.parse(localStorage.user)):
         axios.get("/api/current").then(({data}) => {
             setUser(data);
         });
@@ -45,6 +48,7 @@ export function getUserId() {
 export function getName() {
     const [user, setUser] = useState();
     useEffect(() => {
+        localStorage.user?setUser(JSON.parse(localStorage.user)):
         axios.get("/api/current").then(({data}) => {
             setUser(data);
         });
@@ -56,6 +60,7 @@ export function getName() {
 export function getRole() {
     const [user, setUser] = useState();
     useEffect(() => {
+        localStorage.user?setUser(JSON.parse(localStorage.user)):
         axios.get("/api/current").then(({data}) => {
             setUser(data);
         });

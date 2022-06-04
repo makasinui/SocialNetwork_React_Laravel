@@ -10,6 +10,7 @@
 
 .user-text{
     margin-top: .5%;
+    word-break: break-all;
 }
 
 .news-item{
@@ -17,4 +18,5 @@
     margin-top:1%;
     border:1px solid black;
     border-radius:20px;
+    max-width: 1000px;
 }
