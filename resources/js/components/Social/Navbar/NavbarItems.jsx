@@ -24,7 +24,7 @@ export const items = [
             />
         ),
         text: "Профиль",
-        url: "/profile",
+        url: "/index/profile",
     },
     {
         id: 3,

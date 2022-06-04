@@ -22,17 +22,12 @@ function App() {
                     }
                 />
                 <Route
-                    path="index"
-                    element={
-                        <CheckAuthorized>
-                            <SocialIndex />
-                        </CheckAuthorized>
-                    }
-                />
-                <Route 
-                    path="/profile"
-                    element = {<ProfileIndex />}
-                />
+                path="index/*"
+                element={
+                    <CheckAuthorized>
+                        <SocialIndex />
+                    </CheckAuthorized>
+                } />
             </Routes>
         </BrowserRouter>
     );
