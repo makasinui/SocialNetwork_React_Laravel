@@ -20,4 +20,10 @@ class LikesController extends Controller
 
         return new LikesResource($created_like);
     }
+
+    public function destroy(Like $like) 
+    {
+        $like->delete();
+        return true;
+    }
 }

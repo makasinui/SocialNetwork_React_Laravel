@@ -14,47 +14,76 @@ export const News = () => {
     const [news, setNews] = useState();
     const [userID, setUserID] = useState();
     const [likes, setLikes] = useState();
-    const noLike = useRef(null);
-    const like = useRef(null);
 
     useEffect(() => {
+        mount();
+        axios.get("/api/current").then(({ data }) => {
+            setUserID(data?.id)
+        });
+        getLikes();
+    }, [userID]);
+
+    function mount() {
         axios.get("/api/news").then(({ data }) => {
             setNews(data);
         });
-        axios.get("/api/current").then(({ data }) => {
-            setUserID(data?.id);
-            if (userID !== undefined) {
-                axios.get("/api/users/" + userID).then(({ data }) => {
-                    setLikes(data.data.likes);
-                });
-            }
-        });
-    }, [userID]);
+    }
+
+    function getLikes() {    
+        if (userID !== undefined) {
+            axios.get("/api/users/" + userID).then(({ data }) => {
+                setLikes(data.data.likes);
+            });
+        }
+    }
 
     function handleClickDelete(id) {
         axios
             .delete("/api/news/" + id)
             .then(() => {
-                alert("Успешно!");
-                window.location.href = "/index";
+                mount()
             })
             .catch((e) => {
                 throw new Error(e);
             });
     }
 
-    function handleClickLike(news_id, user_id, isLike) {
-        
-        console.log(news_id, user_id);
-
+    function handleClickLike(news_id, user_id, isLike, likeId = 0) {
         if(!isLike) {
             axios.post('/api/likes/',{
                 'news_id':news_id,
                 'user_id':user_id
             })
+            .then(()=>{
+                getLikes()
+            })
+        } else {
+            axios.delete(`/api/likes/${likeId}`).then(()=>{
+                getLikes()
+            })
+        }
+    }
 
-            noLike.style.background = 'black'
+    function isLiked(id) {
+        const like = likes.find((like)=>like.news_id === id)
 
+        if(!!like) {
+            return(<FavoriteIcon
+                sx={{ width: 20, height: 20 }}
+                onClick={() =>
+                    handleClickLike(id, userID, 1, like.id)
+                }
+            />)
+        } else {
+            return(
+                <FavoriteBorderIcon
+                    className="action__like"
+                    sx={{ width: 20, height: 20 }}
+                    onClick={() =>
+                        handleClickLike(id, userID, 0)
+                    }
+                />
+            )
         }
     }
 
@@ -79,24 +108,7 @@ export const News = () => {
                         </div>
                         <div className="user-text">{item.text}</div>
                         <div className="user-actions">
-                            {likes[i]?.news_id !== item.id ? (
-                                <FavoriteBorderIcon
-                                    className="action__like"
-                                    sx={{ width: 20, height: 20 }}
-                                    onClick={() =>
-                                        handleClickLike(item.id, userID, 0)
-                                    }
-                                    ref={noLike}
-                                />
-                            ) : (
-                                <FavoriteIcon
-                                    sx={{ width: 20, height: 20 }}
-                                    onClick={() =>
-                                        handleClickLike(item.id, userID, 1)
-                                    }
-                                    ref={like}
-                                />
-                            )}
+                            {isLiked(item.id)}
                             {item.user.id === userID ? (
                                 <DeleteOutlineIcon
                                     sx={{ width: 20, height: 20 }}

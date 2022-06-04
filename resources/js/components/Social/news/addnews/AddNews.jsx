@@ -6,10 +6,9 @@ import Avatar from "@mui/material/Avatar";
 import SendRoundedIcon from "@mui/icons-material/SendRounded";
 import { getName } from "../../../helpers/User";
 
-export const AddNews = () => {
+export const AddNews = (handleClick) => {
     const [text, setText] = useState("");
     const userId = getUserId();
-
     
     function handleClick() {
         if(text) {
@@ -17,16 +16,13 @@ export const AddNews = () => {
                 text:text,
                 user_id:userId
             }).then(()=>{
-                alert('Успешно!')
-                window.location.href="/index"
+                
             })
             .catch((e)=>{
                 throw new Error(e)
             })
         }
     }
-
-    
 
     return (
         <div className="main-input">

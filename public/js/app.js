@@ -26788,48 +26788,48 @@ var items = [{
     fontSize: "medium",
     className: "navbar__icon"
   }),
-  text: 'Новости',
-  url: '/index'
+  text: "Новости",
+  url: "/index"
 }, {
   id: 2,
   icon: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(_mui_icons_material_AccountCircleOutlined__WEBPACK_IMPORTED_MODULE_3__["default"], {
     fontSize: "medium",
     className: "navbar__icon"
   }),
-  text: 'Профиль',
-  url: '/profile'
+  text: "Профиль",
+  url: "/profile"
 }, {
   id: 3,
   icon: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(_mui_icons_material_EmailOutlined__WEBPACK_IMPORTED_MODULE_4__["default"], {
     fontSize: "medium",
     className: "navbar__icon"
   }),
-  text: 'Сообщения',
-  url: '/msg'
+  text: "Сообщения",
+  url: "/msg"
 }, {
   id: 4,
   icon: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(_mui_icons_material_GroupOutlined__WEBPACK_IMPORTED_MODULE_5__["default"], {
     fontSize: "medium",
     className: "navbar__icon"
   }),
-  text: 'Друзья',
-  url: '/friends'
+  text: "Друзья",
+  url: "/friends"
 }, {
   id: 5,
   icon: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(_mui_icons_material_SettingsOutlined__WEBPACK_IMPORTED_MODULE_6__["default"], {
     fontSize: "medium",
     className: "navbar__icon"
   }),
-  text: 'Настройки',
-  url: '/settings'
+  text: "Настройки",
+  url: "/settings"
 }, {
   id: 6,
   icon: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(_mui_icons_material_SettingsOutlined__WEBPACK_IMPORTED_MODULE_6__["default"], {
     fontSize: "medium",
     className: "navbar__icon"
   }),
-  text: 'Что я блять накодил?',
-  url: '/settings'
+  text: "Что я блять накодил?",
+  url: "/settings"
 }];
 var NavbarItems = function NavbarItems() {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
@@ -26865,11 +26865,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _mui_material_Avatar__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @mui/material/Avatar */ "./node_modules/@mui/material/Avatar/Avatar.js");
+/* harmony import */ var _mui_material_Avatar__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @mui/material/Avatar */ "./node_modules/@mui/material/Avatar/Avatar.js");
 /* harmony import */ var _mui_icons_material_FavoriteBorder__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @mui/icons-material/FavoriteBorder */ "./node_modules/@mui/icons-material/FavoriteBorder.js");
 /* harmony import */ var _mui_icons_material_DeleteOutline__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @mui/icons-material/DeleteOutline */ "./node_modules/@mui/icons-material/DeleteOutline.js");
 /* harmony import */ var _mui_material_CircularProgress__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @mui/material/CircularProgress */ "./node_modules/@mui/material/CircularProgress/CircularProgress.js");
-/* harmony import */ var _mui_icons_material_Favorite__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @mui/icons-material/Favorite */ "./node_modules/@mui/icons-material/Favorite.js");
+/* harmony import */ var _mui_icons_material_Favorite__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @mui/icons-material/Favorite */ "./node_modules/@mui/icons-material/Favorite.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
@@ -26909,44 +26909,82 @@ var News = function News() {
       likes = _useState6[0],
       setLikes = _useState6[1];
 
-  var noLike = (0,react__WEBPACK_IMPORTED_MODULE_1__.useRef)(null);
-  var like = (0,react__WEBPACK_IMPORTED_MODULE_1__.useRef)(null);
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
-    axios__WEBPACK_IMPORTED_MODULE_2___default().get("/api/news").then(function (_ref) {
+    mount();
+    axios__WEBPACK_IMPORTED_MODULE_2___default().get("/api/current").then(function (_ref) {
       var data = _ref.data;
+      setUserID(data === null || data === void 0 ? void 0 : data.id);
+    });
+    getLikes();
+  }, [userID]);
+
+  function mount() {
+    axios__WEBPACK_IMPORTED_MODULE_2___default().get("/api/news").then(function (_ref2) {
+      var data = _ref2.data;
       setNews(data);
     });
-    axios__WEBPACK_IMPORTED_MODULE_2___default().get("/api/current").then(function (_ref2) {
-      var data = _ref2.data;
-      setUserID(data === null || data === void 0 ? void 0 : data.id);
+  }
 
-      if (userID !== undefined) {
-        axios__WEBPACK_IMPORTED_MODULE_2___default().get("/api/users/" + userID).then(function (_ref3) {
-          var data = _ref3.data;
-          setLikes(data.data.likes);
-        });
-      }
-    });
-  }, [userID]);
+  function getLikes() {
+    if (userID !== undefined) {
+      axios__WEBPACK_IMPORTED_MODULE_2___default().get("/api/users/" + userID).then(function (_ref3) {
+        var data = _ref3.data;
+        setLikes(data.data.likes);
+      });
+    }
+  }
 
   function handleClickDelete(id) {
     axios__WEBPACK_IMPORTED_MODULE_2___default()["delete"]("/api/news/" + id).then(function () {
-      alert("Успешно!");
-      window.location.href = "/index";
+      mount();
     })["catch"](function (e) {
       throw new Error(e);
     });
   }
 
   function handleClickLike(news_id, user_id, isLike) {
-    console.log(news_id, user_id);
+    var likeId = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 0;
 
     if (!isLike) {
       axios__WEBPACK_IMPORTED_MODULE_2___default().post('/api/likes/', {
         'news_id': news_id,
         'user_id': user_id
+      }).then(function () {
+        getLikes();
       });
-      noLike.style.background = 'black';
+    } else {
+      axios__WEBPACK_IMPORTED_MODULE_2___default()["delete"]("/api/likes/".concat(likeId)).then(function () {
+        getLikes();
+      });
+    }
+  }
+
+  function isLiked(id) {
+    var like = likes.find(function (like) {
+      return like.news_id === id;
+    });
+
+    if (!!like) {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_mui_icons_material_Favorite__WEBPACK_IMPORTED_MODULE_4__["default"], {
+        sx: {
+          width: 20,
+          height: 20
+        },
+        onClick: function onClick() {
+          return handleClickLike(id, userID, 1, like.id);
+        }
+      });
+    } else {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_mui_icons_material_FavoriteBorder__WEBPACK_IMPORTED_MODULE_5__["default"], {
+        className: "action__like",
+        sx: {
+          width: 20,
+          height: 20
+        },
+        onClick: function onClick() {
+          return handleClickLike(id, userID, 0);
+        }
+      });
     }
   }
 
@@ -26957,13 +26995,11 @@ var News = function News() {
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
     children: news !== null && news !== void 0 && news.data && likes ? news.data.map(function (item, i) {
-      var _likes$i;
-
       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
         className: "news-item",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
           className: "news-user",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_mui_material_Avatar__WEBPACK_IMPORTED_MODULE_4__["default"], {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_mui_material_Avatar__WEBPACK_IMPORTED_MODULE_6__["default"], {
             sx: {
               width: 40,
               height: 40
@@ -26980,26 +27016,7 @@ var News = function News() {
           children: item.text
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
           className: "user-actions",
-          children: [((_likes$i = likes[i]) === null || _likes$i === void 0 ? void 0 : _likes$i.news_id) !== item.id ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_mui_icons_material_FavoriteBorder__WEBPACK_IMPORTED_MODULE_5__["default"], {
-            className: "action__like",
-            sx: {
-              width: 20,
-              height: 20
-            },
-            onClick: function onClick() {
-              return handleClickLike(item.id, userID, 0);
-            },
-            ref: noLike
-          }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_mui_icons_material_Favorite__WEBPACK_IMPORTED_MODULE_6__["default"], {
-            sx: {
-              width: 20,
-              height: 20
-            },
-            onClick: function onClick() {
-              return handleClickLike(item.id, userID, 1);
-            },
-            ref: like
-          }), item.user.id === userID ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_mui_icons_material_DeleteOutline__WEBPACK_IMPORTED_MODULE_7__["default"], {
+          children: [isLiked(item.id), item.user.id === userID ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_mui_icons_material_DeleteOutline__WEBPACK_IMPORTED_MODULE_7__["default"], {
             sx: {
               width: 20,
               height: 20
@@ -27059,7 +27076,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-var AddNews = function AddNews() {
+var AddNews = function AddNews(handleClick) {
   var _getName;
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
@@ -27074,10 +27091,7 @@ var AddNews = function AddNews() {
       axios__WEBPACK_IMPORTED_MODULE_2___default().post('/api/news', {
         text: text,
         user_id: userId
-      }).then(function () {
-        alert('Успешно!');
-        window.location.href = "/index";
-      })["catch"](function (e) {
+      }).then(function () {})["catch"](function (e) {
         throw new Error(e);
       });
     }
@@ -32451,7 +32465,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".navbar-section {\n  float: left;\n  padding-right: 5%;\n}\n\n.nav-items {\n  padding: 0;\n}\n\n.nav-item {\n  list-style-type: none;\n  margin-bottom: 8%;\n  cursor: pointer;\n}\n.nav-item:hover {\n  background-color: #e7e7e7bb;\n  border-left: 3px solid #e7e7e7bb;\n}\n\n.nav-text {\n  font-family: \"Open Sans\";\n  font-size: 16px;\n}\n\n.navbar__icon {\n  flex-grow: 0.3;\n}\n\n.navbar-nav {\n  background-color: #424e5c;\n  opacity: 0.8;\n  border-radius: 5%;\n  min-width: 170px;\n  padding: 20px;\n  padding-left: 0;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".navbar-section {\n  float: left;\n  padding-right: 5%;\n}\n\n.nav-items {\n  padding: 0;\n}\n\n.nav-item {\n  list-style-type: none;\n  margin-bottom: 8%;\n  cursor: pointer;\n}\n.nav-item:hover {\n  background-color: #e7e7e7bb;\n  border-left: 3px solid #e7e7e7bb;\n}\n\n.nav-text {\n  font-family: \"Open Sans\";\n  font-size: 16px;\n}\n\n.navbar__icon {\n  flex-grow: 0.3;\n}\n\n.navbar-nav {\n  background-color: #424e5c1c;\n  border-radius: 5%;\n  min-width: 170px;\n  padding: 20px;\n  padding-left: 0;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        /* Schema::create('news', function (Blueprint $table) {
+        Schema::create('news', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('user_id')->unsigned();
             $table->foreign('user_id')
@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('text',500);
             $table->timestamps();
 
-        }); */
+        });
     }
 
     /**
