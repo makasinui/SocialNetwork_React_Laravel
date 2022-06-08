@@ -8,12 +8,7 @@ import { News} from '../news/News'
 export const Main = () => {
     return (
         <section className="social-main">
-            <h1>Последняя активность</h1>
-            <AddNews />
-            <div className="news">
-                <News />
-            </div>
-
+            <News />
         </section>
     );
 }

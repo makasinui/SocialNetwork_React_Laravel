@@ -9,9 +9,12 @@
 
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:300,regular,500,600,700,800,300italic,italic,500italic,600italic,700italic,800italic);
 
-a{
+a {
     text-decoration: none !important;
-
-    color:inherit !important;
+    color: inherit !important;
     background-color: transparent;
+}
+
+* {
+    box-sizing: border-box;
 }

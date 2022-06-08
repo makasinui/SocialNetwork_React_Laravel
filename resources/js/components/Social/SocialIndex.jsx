@@ -4,11 +4,12 @@ import {Navbar} from "./navbar/Navbar";
 import {Main} from "./main/Main";
 import { Route, Routes } from "react-router";
 import { ProfileIndex } from "./profile/ProfileIndex";
+import {Message} from "./message/Message";
 export const SocialIndex = ()=> {
     return (
         <React.Fragment>
             <Header />
-            <main className="container social-index">
+            <main className="social-index">
                 <Navbar />
                 <Routes>
                     <Route path="/" element={<Main />} />
@@ -16,8 +17,13 @@ export const SocialIndex = ()=> {
                         path="profile"
                         element={
                             <ProfileIndex />
-                        }       
+                        }
                     />
+                    <Route
+                        path="msg"
+                        element={
+                        <Message />
+                    } />
                 </Routes>
             </main>
         </React.Fragment>

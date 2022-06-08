@@ -1,11 +1,17 @@
-import React from 'react'
 import "./header.scss";
+
 import { Link } from "react-router-dom";
+
 import ProfileDropdown from "../profile/components/profile-dropdown/ProfileDropdown";
+import {DarkMode} from "../dark-mode/DarkMode";
+
 import NotificationsOutlinedIcon from "@mui/icons-material/NotificationsOutlined";
+
+
+
 export const Header = ()=> {
     return (
-        <header className="social-header container">
+        <header className="social-header">
             <div className="social-logo">
                 <Link to="/">
                     <img src="/img/icon.png" alt="Logo" className="logo-img" />
@@ -17,6 +23,7 @@ export const Header = ()=> {
                     <ProfileDropdown />
                 </div>
                 <NotificationsOutlinedIcon />
+                <DarkMode />
             </div>
         </header>
     );

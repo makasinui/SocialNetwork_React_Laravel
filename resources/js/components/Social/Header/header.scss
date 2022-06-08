@@ -7,6 +7,11 @@
     flex-basis: 10%;
 }
 
+.social-header {
+    box-shadow: 2px 7px 34px 2px rgb(177 65 94 / 20%);
+    background:#ffcc40;
+}
+
 .social-header,
 .social-logo {
     @include alignCenter();

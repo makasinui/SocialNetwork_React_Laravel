@@ -1,0 +1,29 @@
+.message-friends {
+    display: flex;
+    flex-direction: column;
+    min-height: 680px;
+    min-width: 20%;
+    padding: 15px;
+    border: 2px solid gray;
+}
+
+.friend {
+    display: flex;
+    align-items: center;
+    margin-bottom: 3vh;
+    padding: 10px;
+
+    &:hover {
+        background-color: #424e5c1c;
+    }
+
+    &:active {
+        background-color: #424e5c1c;
+    }
+    border-bottom: 2px solid gray;
+}
+
+.friends__name {
+    margin-left: 3%;
+    font-size: 16px;
+}

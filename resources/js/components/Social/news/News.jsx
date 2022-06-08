@@ -1,6 +1,6 @@
 import "./news.scss";
 
-import React, { Fragment, useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import axios from "axios";
 
@@ -9,6 +9,7 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import CircularProgress from "@mui/material/CircularProgress";
 import FavoriteIcon from "@mui/icons-material/Favorite";
+import {AddNews} from "./addnews/AddNews";
 
 export const News = () => {
     const [news, setNews] = useState();
@@ -32,7 +33,21 @@ export const News = () => {
         });
     }
 
-    function getLikes() {    
+    function handleClickAdd(text) {
+        if(text) {
+            axios.post('/api/news',{
+                text:text,
+                user_id:userID
+            }).then(()=>{
+                getNews();
+            })
+            .catch((e)=>{
+                throw new Error(e)
+            })
+        }
+    }
+
+    function getLikes() {
         if (userID !== undefined) {
             axios.get("/api/users/" + userID).then(({ data }) => {
                 setLikes(data.data.likes);
@@ -41,6 +56,12 @@ export const News = () => {
     }
 
     function handleClickDelete(id) {
+        const items = [...news]
+        const itemID = items.findIndex((item)=>item.id===id)
+        delete items[itemID]
+
+        setNews(items.filter(Boolean))
+
         axios
             .delete("/api/news/" + id)
             .then(() => {
@@ -63,7 +84,7 @@ export const News = () => {
             })
 
             setLikes(new_likes)
-            
+
             axios.post('/api/likes/',{
                 'news_id':news_id,
                 'user_id':user_id
@@ -76,7 +97,7 @@ export const News = () => {
             setLikes(new_likes.filter(Boolean))
 
             axios.delete(`/api/likes/${likeId}`).then(()=>{
-                
+
             })
         }
     }
@@ -105,42 +126,55 @@ export const News = () => {
     }
 
     function GetDate(date) {
-        let newDate = new Date(date).toLocaleDateString();
+        const options = {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+            hour: 'numeric',
+            minute: 'numeric',
+        }
+
+        const newDate = new Date(date).toLocaleString('ru', options);
         return newDate;
     }
 
     return (
+
         <div>
-            {news && likes ? (
-                news.map((item,i) => (
-                    <div key={item.id} className="news-item">
-                        <div className="news-user">
-                            <Avatar sx={{ width: 40, height: 40 }}>
-                                {item.user.name.charAt(0)}
-                            </Avatar>
-                            <div className="user-info">
-                                <div>{item.user.name}</div>
-                                {GetDate(item.created_at)}
+            <h1>Последняя активность</h1>
+            <AddNews handleClickAdd={handleClickAdd}/>
+            <div>
+                {news && likes ? (
+                    news.map((item) => (
+                        <div key={item.id} className="news-item">
+                            <div className="news-user">
+                                <Avatar sx={{width: 40, height: 40}}>
+                                    {item.user.name.charAt(0)}
+                                </Avatar>
+                                <div className="user-info">
+                                    <div>{item.user.name}</div>
+                                    {GetDate(item.created_at)}
+                                </div>
+                            </div>
+                            <div className="user-text">{item.text}</div>
+                            <div className="user-actions">
+                                {isLiked(item.id)}
+                                {item.user.id === userID ? (
+                                    <DeleteOutlineIcon
+                                        sx={{width: 20, height: 20}}
+                                        onClick={() => handleClickDelete(item.id)}
+                                        style={{cursor: "pointer"}}
+                                    />
+                                ) : (
+                                    ""
+                                )}
                             </div>
                         </div>
-                        <div className="user-text">{item.text}</div>
-                        <div className="user-actions">
-                            {isLiked(item.id)}
-                            {item.user.id === userID ? (
-                                <DeleteOutlineIcon
-                                    sx={{ width: 20, height: 20 }}
-                                    onClick={() => handleClickDelete(item.id)}
-                                    style={{ cursor: "pointer" }}
-                                />
-                            ) : (
-                                ""
-                            )}
-                        </div>
-                    </div>
-                ))
-            ) : (
-                <CircularProgress />
-            )}
+                    ))
+                ) : (
+                    <CircularProgress/>
+                )}
+            </div>
         </div>
     );
 };

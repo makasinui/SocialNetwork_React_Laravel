@@ -5,7 +5,6 @@ import {SocialIndex} from "./social/SocialIndex";
 import AdminIndex from "./admin/AdminIndex";
 import {IsAdmin} from "./helpers/IsAdmin";
 import {CheckAuthorized} from "./helpers/User";
-import {ProfileIndex} from "./social/profile/ProfileIndex";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
