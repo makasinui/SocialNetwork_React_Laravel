@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->enum('gender', ['male','female'])->default('male')->after('role');
-            $table->integer('mobile')->length(11)->after('gender');
-            $table->string('img')->after('mobile');
+            //$table->integer('mobile')->length(11)->after('gender');
+            //$table->string('img')->after('mobile');
         });
     }
 
