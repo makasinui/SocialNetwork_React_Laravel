@@ -1,0 +1,21 @@
+.modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 1000px;
+    background-color: white;
+}
+
+.modal-send {
+    border-radius: 8px;
+    margin: 0 auto;
+}
+
+.code-input {
+    width: 100% !important;
+}
+
+.send-btn {
+    width: 100%;
+}

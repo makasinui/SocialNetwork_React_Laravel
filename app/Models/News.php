@@ -13,6 +13,7 @@ class News extends Model
         'id',
         'user_id',
         'text',
+        'is_code',
         'created_at'
     ];
 
